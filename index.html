@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+
+</head>
+
+<body>
+
+  <lable for="ageInput">Enter your age</lable>
+  <input id="ageInput" type="number" />
+  <button id="displayAgeBtn">Display age</button>
+  <button id="checkAgeBtn">Check Eligibility</button>
+  <p id="ageEligibilityResult"></p>
+
+  <script>
+
+    //check age eligibility
+    const ageInput = document.querySelector("#ageInput");
+    const displayAgeBtn = document.querySelector("#displayAgeBtn");
+    const checkAgeBtn = document.querySelector("#checkAgeBtn");
+    const ageEligibilityResult = document.querySelector("#ageEligibilityResult");
+
+    displayAgeBtn.addEventListener("click", function () {
+      const age = ageInput.value;
+      if (age) {
+        ageEligibilityResult.textContent = `Your age: ${age}`;
+      }
+      else {
+        ageEligibilityResult.textContent = `Enter your age!`
+      }
+    });
+
+    checkAgeBtn.addEventListener("click", function () {
+      const age = ageInput.value;
+      if (age >= 18 && age <= 100) {
+        ageEligibilityResult.style.color = "green";
+      }
+      else {
+        ageEligibilityResult.style.color = "red";
+      }
+    });
+
+  </script>
+</body>
+
+</html>
