@@ -23,6 +23,13 @@
   <button id="checkStudentBtn">Check Eligibility</button>
   <p id="studentEligibilityResult"></p>
 
+
+  <label for="passwordInput">Enter password:</label>
+  <input id="passwordInput" type="text"/>
+  <button id="displayPasswordBtn">Display Password</button>
+  <button id="checkPasswordBtn">Check Password</button>
+  <p id="checkPasswordResult"></p>
+
   <script>
 
     //check age eligibility
@@ -80,8 +87,43 @@
           studentEligibilityResult.style.color = "red";
         }
       }
-    })
+    });
 
+    //display password eligibility
+    const passwordInput = document.querySelector("#passwordInput");
+    const displayPasswordBtn = document.querySelector("#displayPasswordBtn");
+    const checkPasswordBtn = document.querySelector("#checkPasswordBtn");
+    const checkPasswordResult = document.querySelector("#checkPasswordResult");
+
+    displayPasswordBtn.addEventListener("click", function(){
+      const password = passwordInput.value;
+      if (password)
+      {
+        checkPasswordResult.textContent = `Your Password: ${password}`;
+      }
+      else
+      {
+        checkPasswordResult.textContent = `Enter a password!`
+      }
+    });
+
+    checkPasswordBtn.addEventListener("click", function(){
+      const password = passwordInput.value;
+      if (password)
+      {
+        const atIndex = password.indexOf("@");
+        if (atIndex !== -1)
+        {
+          checkPasswordResult.textContent = `Password Accepted.`;
+          checkPasswordResult.style.color = "green";
+        }
+        else
+        {
+          checkPasswordResult.textContent = `Password Declined! Please submit a password with "@" symbol.`
+          checkPasswordResult.style.color = "red";
+        }
+      }
+    });
 
   </script>
 </body>
