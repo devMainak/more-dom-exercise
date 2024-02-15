@@ -16,6 +16,13 @@
   <button id="checkAgeBtn">Check Eligibility</button>
   <p id="ageEligibilityResult"></p>
 
+
+  <label for="studentInput">Are you a student?</label>
+  <input id="studentInput" type="text" />
+  <button id="displayAnsBtn">Display Answer</button>
+  <button id="checkStudentBtn">Check Eligibility</button>
+  <p id="studentEligibilityResult"></p>
+
   <script>
 
     //check age eligibility
@@ -43,6 +50,38 @@
         ageEligibilityResult.style.color = "red";
       }
     });
+
+
+    //display student eligibility
+    const studentInput = document.querySelector("#studentInput");
+    const displayAnsBtn = document.querySelector("#displayAnsBtn");
+    const checkStudentBtn = document.querySelector("#checkStudentBtn");
+    const studentEligibilityResult = document.querySelector("#studentEligibilityResult");
+
+    displayAnsBtn.addEventListener("click", function () {
+      const studentAnswer = studentInput.value;
+      if (studentAnswer) {
+        studentEligibilityResult.textContent = `Your answer: ${studentAnswer}`;
+      }
+      else {
+        studentEligibilityResult.textContent = `Enter an answer!`;
+      }
+    })
+
+    checkStudentBtn.addEventListener("click", function () {
+      const studentAnswer = studentInput.value;
+      if (studentAnswer) {
+        if (studentAnswer == "YES" || studentAnswer == "Yes" || studentAnswer == "yes") {
+          studentEligibilityResult.textContent = `You are eligible.`
+          studentEligibilityResult.style.color = "green";
+        }
+        else if (studentAnswer == "NO" || studentAnswer == "No" || studentAnswer == "no") {
+          studentEligibilityResult.textContent = `You are not eligible.`;
+          studentEligibilityResult.style.color = "red";
+        }
+      }
+    })
+
 
   </script>
 </body>
